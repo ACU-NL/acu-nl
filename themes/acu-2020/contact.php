@@ -38,7 +38,7 @@
                         <div>
                             <h2>Email addresses</h2>
                             <p>General email address: <a href="mailto:info@acu.nl">info@acu.nl</a><br>
-                                Volunteers: <a href="mailto:vrijwilliger@acu.nl">vrijwilliger@acu.nl</a><br>
+                                Volunteers: <a href="mailto:help@acu.nl">help@acu.nl</a><br>
                                 Bookings: <a href="mailto:bookings@acu.nl">bookings@acu.nl</a><br>
                                 Kitchen: <a href="mailto:kitchen@acu.nl">kitchen@acu.nl</a></p>
                         </div>
@@ -48,7 +48,7 @@
                     <?php get_template_part( 'openingtimes', 'page' ); ?>
                 </section>
                 <section id="ContactMap">
-                    <?php echo do_shortcode( '[wp_mapbox_gl_js map_id="401"]' ); ?>
+                    <?php echo do_shortcode( '[wp_mapbox_gl_js map_id="1776" height="500px"]' ); ?>
                 </section>
                 
                 <?php $values = get_field('show_contact_form'); if(in_array("show", $values )){ ?>

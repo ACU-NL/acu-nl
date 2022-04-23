@@ -19,7 +19,7 @@
     <?php if( have_rows('art_area_settings') ): while( have_rows('art_area_settings') ) : the_row(); ?>
         <section id="HomeArt">
             <div id="HomeArtBackgroundImage">
-                <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/art.png" />
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/art.jpg" />
             </div>
             <div id="HomeArtHeader">
                 <h2><?php the_sub_field('art_headline'); ?></h2>

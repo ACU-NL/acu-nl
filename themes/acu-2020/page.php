@@ -3,8 +3,6 @@
     <main>
         <div id="PageWrap">
             <section id="PageIntro" <?php if( get_field('page_header_image') ): ?>style="background-image:url('<?php the_field('page_header_image'); ?>');"<?php endif; ?>>
-                <?php if( get_field('page_header_image') ): ?><div id="PageIntroHeader">
-                </div><?php endif; ?>
                 <div id="PageIntroContent">
                     <h1><?php the_title(); ?></h1>
                     <?php the_field('page_intro_text'); ?>

@@ -34,7 +34,7 @@
 	<header>
         <nav>
             <div id="Header">
-                <a href="https://www.acu.nl">
+                <a href="/">
                     <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/acu-logo.svg" />
                 </a>
                 <span id="AccessMobileMenu">Menu&nbsp;&#8801;</span>

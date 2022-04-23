@@ -207,13 +207,13 @@ if ($expireTransient = get_transient($post->ID) === false) {
 
 /* add_action( 'init', 'auto_delete_events' ); *//*HIJ LOOPT HIER OP VAST, MAAR JOOST MAG WETEN WAAROM */
 
-/* WISHING CONTACT FORM 7 WASN’T SUCH A TOTAL BITCH */
+/* WISHING CONTACT FORM 7 WASN’T SUCH A TOTAL BITCH 
 
 add_filter('wpcf7_form_elements', function($content) {
     $content = preg_replace('/<(span).*?class="\s*(?:.*\s)?wpcf7-form-control-wrap(?:\s[^"]+)?\s*"[^\>]*>(.*)<\/\1>/i', '\2', $content);
 
     return $content;
-});
+});*/
 
 /* LOAD JAVASCRIPT LIBARIES */
 
@@ -230,4 +230,20 @@ add_filter('wpcf7_form_elements', function($content) {
  
     add_action( 'wp_enqueue_scripts', 'enqueue_isotope_callback' );
 
+
+/* Validate event dates */
+add_action('acf/validate_save_post', 'my_acf_validate_save_post', 80);
+function my_acf_validate_save_post($post_id) {
+	// Check if it is post with dates, didn't find a good way to get post_type there
+	if ($_POST['acf']['field_5f502d6ac5d15'] != "" && $_POST['acf']['field_5f502e40c5d1a'] != "") {
+		$start_date = $_POST['acf']['field_5f502d6ac5d15'];
+		$start_time = $_POST['acf']['field_5f502e07c5d18'];
+		$end_datetime = $_POST['acf']['field_5f502e40c5d1a'];
+		$start_datetime = strtotime($start_date."T".$start_time);
+		$end_datetime = strtotime($end_datetime);
+		if ($start_datetime > $end_datetime){
+			acf_add_validation_error( 'acf[field_5f502e40c5d1a]', 'End time should be after start time') ;
+		}
+	}
+}
 ?>

@@ -116,6 +116,86 @@ License: Only for use by ACU on the domain https://www.acu.nl and subdomains of 
         }
     }
 
+/* Shop styles start */
+#PageWrap .woocommerce a.button {
+ background: #518e8c;
+	border-radius: 0;
+}
+
+#PageWrap .woocommerce button.button {
+	border-radius: 0;
+}
+
+#PageWrap .woocommerce .button:hover {
+    animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    box-shadow: 0 0 10px 0 rgba(255,255,255,.5);
+}
+
+#PageWrap .woocommerce .tabs a {
+    color: #a46497;
+}
+
+.woocommerce .single-product .quantity .qty{display:none;}
+
+.woocommerce div.product .button {
+	border-radius: 0;
+}
+
+.woocommerce div.product .button:hover {
+    animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    box-shadow: 0 0 10px 0 rgba(255,255,255,.5);
+}
+
+.woocommerce div.product form.cart .variations select {
+	position: relative;
+    box-sizing: border-box;
+    border: none;
+    background: #ffffff;
+    border-bottom: 2px solid #ffffff;
+    outline: none;
+    padding: 5px 10px 3px 10px;
+    height: 40px;
+    font-family: inherit;
+    font-size: inherit;
+    border-radius: 0;
+    -webkit-appearance: none;
+}
+
+.woocommerce .woocommerce-ordering select {
+	position: relative;
+    box-sizing: border-box;
+    border: none;
+    background: #ffffff;
+    border-bottom: 2px solid #ffffff;
+    outline: none;
+    padding: 5px 10px 3px 10px;
+    height: 40px;
+    font-family: inherit;
+    font-size: inherit;
+    border-radius: 0;
+    -webkit-appearance: none;
+}
+
+
+.woocommerce div.product form.cart .variations select:focus {
+    background: #eff6f5;
+    border-bottom: 2px solid #a46497;
+}
+
+.woocommerce input[type="radio"], input[type="checkbox"] {
+    -moz-appearance: auto;
+    -webkit-appearance: auto;
+}
+
+.related.products {
+  display: none;
+}
+
+/* Shop styles end */
+/* Hide recapcha */
+.grecaptcha-badge { 
+	visibility: hidden; 
+}
 
 /* BASIC SETTINGS */
 body {
@@ -249,6 +329,7 @@ a {
 }
 .Notice p {
     margin-top: 0;
+	margin-bottom: 0;
 }
 .CloseNotice {
     position: absolute;
@@ -322,11 +403,11 @@ a {
     width: 100%;
     max-width: 960px;
     margin: 0 auto;
-    padding: 0 30px 0 30px;
+    padding: 0 30px 0 15px;
     height: 100px;
 }
 #Header img {
-    height: 50px;
+    height: 85px;
 }
 #Header ul {
     list-style: none;
@@ -464,13 +545,14 @@ a {
         width: 60%;
         overflow: hidden;
     }
-        #NextUpImage img {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            min-height: 400px;
-        }
+	#NextUpImage img {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		min-height: 400px;
+		max-width: inherit;
+	}
     #NextUpContent {
         z-index: 2;
         position: relative;
@@ -1470,9 +1552,6 @@ h4.HomeArtArtist {
         justify-content: space-between;
         align-items: flex-start;
     }
-    #FoodEntries {
-        margin-bottom: 70px;
-    }
     #FoodAgendaWrap {
         z-index: 2;
         position: relative;
@@ -1515,6 +1594,7 @@ h4.HomeArtArtist {
         transform:translate(-50%,-50%);
         height: 100%;
         min-width: 100%;
+		max-width: none;
     }
 .FoodEntryContent {
     box-sizing: border-box;
@@ -2029,7 +2109,7 @@ line-height: 100%;
 .BDFormField input, .BDFormField select, .BDFormField textarea, .BDFormField #CheckBoxes {
     position: relative;
     box-sizing: border-box;
-    width:calc(100% - 200px);
+    width:100%;
     border: none;
     background: #ffffff;
     border-bottom: 2px solid #ffffff;
@@ -2455,7 +2535,7 @@ line-height: 100%;
         position: relative;
     }
     #Header img {
-        height: 50px;
+        height: 85px;
     }
     #MainNavigationWrap {
         z-index: 5;
@@ -3276,3 +3356,10 @@ line-height: 100%;
         overflow: unset;
     }
 }
+
+/* Fix error messages */
+
+.wpcf7-form-control-wrap {
+	width: 100%;
+}
+
