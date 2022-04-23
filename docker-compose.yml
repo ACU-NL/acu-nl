@@ -10,9 +10,10 @@ services:
       - PUID=1001                     #change PUID if needed
       - PGID=1002                     #change PGID if needed
       - TZ=Europe/Berlin              #change Time Zone if needed
-      - URL=rule.tips                 #insert your domain name - yourdomain.url
+      - URL=acu.nl                 #insert your domain name - yourdomain.url
       - VALIDATION=http
-      - EMAIL=virusmater@gmail.com    #email for notifications
+      - EMAIL=it@acu.com              #email for notifications
+      - SUBDOMAINS=test
     volumes:
       - ./appdata/swag:/config
     ports:
@@ -26,6 +27,7 @@ services:
       - db_data:/var/lib/mysql
     restart: always
     environment:
+      - MYSQL_ROOT_PASSWORD
       - MYSQL_DATABASE
       - MYSQL_USER
       - MYSQL_PASSWORD
@@ -43,6 +45,32 @@ services:
       - WORDPRESS_DB_USER
       - WORDPRESS_DB_PASSWORD
       - WORDPRESS_DB_NAME
+
+  db-test:
+    image: mysql:5.7
+    volumes:
+      - db_data_test:/var/lib/mysql
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD
+      - MYSQL_DATABASE
+      - MYSQL_USER
+      - MYSQL_PASSWORD
+
+  wordpress-test:
+    depends_on:
+      - db-test
+    image: wordpress:latest
+    volumes:
+      - wordpress_data_test:/var/www/html
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+    restart: always
+    environment:
+      - WORDPRESS_DB_HOST=db-test
+      - WORDPRESS_DB_USER
+      - WORDPRESS_DB_PASSWORD
+      - WORDPRESS_DB_NAME
+
 volumes:
   db_data: {}
   wordpress_data: {}
