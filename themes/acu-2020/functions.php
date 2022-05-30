@@ -246,4 +246,28 @@ function my_acf_validate_save_post($post_id) {
 		}
 	}
 }
+
+/* Add column for the event date and make it sortable */
+
+add_filter( 'manage_event_posts_columns', 'set_custom_edit_event_columns' );
+function set_custom_edit_event_columns($columns) {
+    $columns['event_date'] = __( 'Event Date', 'your_text_domain' );
+    return $columns;
+}
+
+// Add the data to the custom columns for the book post type:
+add_action( 'manage_event_posts_custom_column' , 'custom_event_column', 10, 2 );
+function custom_event_column( $column, $post_id ) {
+    switch ( $column ) {
+        case 'event_date' :
+            echo date("Y-m-d", strtotime(get_post_meta( $post_id , 'event_date' , true ))); 
+            break;
+    }
+}
+
+function event_sortable_columns( $columns ) {
+	$columns['event_date'] = 'event_date';
+	return $columns;
+}
+add_filter( 'manage_edit-event_sortable_columns', 'event_sortable_columns' );
 ?>
