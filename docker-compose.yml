@@ -13,7 +13,8 @@ services:
       - URL=acu.nl                 #insert your domain name - yourdomain.url
       - VALIDATION=http
       - EMAIL=it@acu.com              #email for notifications
-      - SUBDOMAINS=test
+      - ONLY_SUBDOMAINS=false
+      - SUBDOMAINS=test,dagstaten,agenda,barrooster,www,abc
     volumes:
       - ./appdata/swag:/config
     ports:
